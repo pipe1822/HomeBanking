@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prestamos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/loan-application.css">
+    
+</head>
+<body>
+    <div id="App">
+        <header>
+           <nav class="d-flex justify-content-center">
+            <a href="./Perfil-principal.html">MI PERFIL</a>
+           </nav>
+        </header>
+        <div class="ganasDeJoder">
+
+        </div>   
+        <div class="container">
+            <form @submit.prevent>
+             <h1 class="text-center">Solicita Tu Prestamo Aquí</h1>
+             <h5 class="mt-5">Tipo de prestamo</h5>
+            <select v-model="prestamoSeleccionado" @click="traerLoans">
+                <div>
+                    <option v-for="prestamoTipo in prestamos"  :value="prestamoTipo.id">{{prestamoTipo.name}}</option>
+                </div>
+            </select>
+            <h5 class="mt-5">Cuotas a diferir</h5>
+            <select v-model="cuotaSeleccionada" @click="pagosMensuales">
+                <option v-for="cuotas in cuotasParaPagar[0]" :value="cuotas" >{{cuotas}}</option>
+            </select>
+
+            <h5 class="mt-5">Monto Maximo a solicitar es de ${{objetoPrestamo.maxAmount}}</h5>
+            <p v-if="montoSolicitado > objetoPrestamo.maxAmount" class="text-danger" >Debes Colocar un monto menor al maximo permitido</p>
+            <input type="number" placeholder="Ingresa El Monto Que Quieres" v-model="montoSolicitado" @keyup="pagosMensuales">
+        
+                <h5 class="mt-5">Selecciona Cuenta de donde va a llegar el dinero</h5>
+                <select v-model="cuentaDSTNO">
+                    <option v-for="cuenta in autenticado.accounts" :value="cuenta.number">{{cuenta.number}}
+                    </option>
+                </select>
+
+                <h5 class="mt-5">Pagos Mensuales Aproximados</h5>
+                <input type="number" readonly disabled :value="pagoMensual">
+
+                <div class="container-fluid d-flex justify-content-center">
+                <button id="submit" class="mt-5" @click="crearPrestamo">Generar Prestamo</button>
+                </div>
+
+
+            </form>
+          </div>
+
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
+        integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3"> </script>
+    <script src="./JS/loan-application.js"></script>
+</body>
+</html>

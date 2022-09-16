@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeBanking Personas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+    </head>
+
+    <body>
+        <div id="App">
+            <header>
+                <div class="fixed-top">
+                    <nav class="navbar navbar-expand-md bg-light  d-flex justify-content-between ">
+                        <div>
+                            <a class="navbar-brand" href="./index.html">
+                                <img src="./assets/f71f09d3aa7db678ee884a2cdea1a435-simbolo-del-edificio-del-banco.png"
+                                    alt="Logo" width="30" height="24">
+                                Banco la Mondu
+                            </a>
+                        </div>
+                        <div>
+                            <div class="collapse navbar-collapse" id="navbarNav">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page" href="./AdministradorInicio.html">Resumen de Usuarios</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="./agregarCuenta.html">Agregar Cuenta</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="button">
+                            <button type="button" class="btn btn-dark">Cerrar Sesion</button>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+            <div class="ganasDeJoder">
+
+            </div>
+            <section>
+                <h2>Client Manager</h2>
+                <forms>
+                    <fieldset>
+                        <label>Name:
+                            <input type="text" placeholder="Name" v-model="nombre">
+                        </label>
+                        <label>
+                            Email:
+                            <input type="email" placeholder="Email" v-model="email">
+                        </label>
+                        <label >
+                            Age
+                            <input type="number" v-model="edad" >
+                        </label>
+                        <input @click=agregarJSON type="submit" value="Add Client">
+                    </fieldset>
+                </forms>
+            </section>
+
+
+
+
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://unpkg.com/vue@3"> </script>
+        <script src="./JS/usuario.js"></script>
+
+    </body>
+
+</html>

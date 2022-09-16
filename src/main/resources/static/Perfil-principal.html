@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style-new-acc.css">
+    <!--Boostrap-->
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+</head>
+
+<body>
+    <div id="App">
+
+        <div class='dashboard'>
+            <div class="dashboard-nav">
+                <header><a href="#" class="menu-toggle"><i class="fas fa-bars"></i></a><a href="./index.html"
+                        class="brand-logo"><i class="fas fa-anchor"></i> <span>BANKU</span></a></header>
+                <nav class="dashboard-nav-list"><a href="#" class="dashboard-nav-item"><a href="#"
+                            class="dashboard-nav-item active " @click="perfil"><i class="fas fa-tachometer-alt"></i>
+                            Inicio
+                        </a>
+
+                        <div class='dashboard-nav-dropdown'><a href="#!"
+                                class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i class="bi bi-1-square"></i>
+                                Cuentas </a>
+                            <div class='dashboard-nav-dropdown-menu'><a v-for="cuenta in autenticado.accounts" href="#"
+                                    class="dashboard-nav-dropdown-item" @click="accounts(cuenta)">{{cuenta.number}}</a>
+                            </div>
+                        </div>
+                        <div class='dashboard-nav-dropdown'><a href="#!"
+                                class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i class="fas fa-users"></i>
+                                Prestamos </a>
+                            <div class='dashboard-nav-dropdown-menu'>
+                                <a v-for="loan in autenticado.loans" href="#" class="dashboard-nav-dropdown-item"
+                                    @click="showPrestamos(loan)">{{loan.loanName}}</a>
+
+                            </div>
+                            <div class='dashboard-nav-dropdown-menu' v-if="autenticado.loans<1">
+                                <a href="#" class="dashboard-nav-dropdown-item">Sin prestamos</a>
+                            </div>
+
+                        </div>
+                        <div class='dashboard-nav-dropdown'><a href="./create-cards.html" class="dashboard-nav-item"><i
+                                    class="fas fa-photo-video"></i>
+                                Mis tarjetas </a>
+
+                        </div>
+
+
+                        <div class="nav-item-divider"></div>
+                        <a @click="cerrarSesion" href="./Inicio_Sesion.html" class="dashboard-nav-item"><i
+                                class="fas fa-sign-out-alt"></i> Cerrar Sesion </a>
+                </nav>
+            </div>
+            <div class='dashboard-app'>
+                <header class='dashboard-toolbar'><a href="#!" class="menu-toggle"><i class="fas fa-bars"></i></a>
+                </header>
+                <div v-if="inicio==0" class='dashboard-content'>
+                    <h1>Bienvenido {{autenticado.name}}</h1>
+
+
+
+
+
+                    <div class="container-account">
+
+                        <div class="contenedor-tarjetas">
+
+
+
+                            <div :class="'card-container-'+principalCard.cardColor">
+
+                                <!--CARD-->
+                                <div class="box1-card">
+                                    <p>DEBITO</p>
+                                </div>
+
+                                <div class="box2-card">
+                                    <img src="assets/chip.png" width="40">
+                                </div>
+
+                                <div class="box3-card">
+                                    <h3>{{principalCard.number}}</h3>
+                                </div>
+
+                                <div class="box4-card">
+
+                                    <div class="valid">
+
+                                        <div class="valid-text">
+                                            <p>VALID</p>
+                                            <p>TRHU</p>
+                                        </div>
+
+                                        <div class="valid-number" style="margin-left: 5px;">
+                                            <h2>{{principalCard.thruDate}}</h2>
+                                        </div>
+
+
+                                    </div>
+
+                                    <div class="cvv-container ">
+                                        <p>cvv</p>
+                                        <h4>{{principalCard.cvv}}</h4>
+                                    </div>
+
+
+
+
+                                </div>
+
+                                <div class="box5-card">
+                                    <h1>{{principalCard.cardholder}}</h1>
+
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/MasterCard_early_1990s_logo.png/1200px-MasterCard_early_1990s_logo.png"
+                                        width="70">
+                                </div>
+                                <!---->
+
+
+
+                            </div>
+
+                            <div class="text-card-container">
+                                <h2>Balance</h2>
+                                <p>$ {{principalAccount.balance}}</p>
+
+                                <button id="card-css" @click="inicio=1">Mis cuentas</button>
+                                <a href="./transfers.html" id="card-css">Transferir</a>
+                            </div>
+
+                        </div>
+
+                        <div class="contenedor-btc">
+
+                            <div class="container-btc-money">
+                                <h2>Precio del Bitcoin</h2>
+
+                                <div v-for="precio in monedas">
+
+                                    <div class="table-btc">
+                                        <p>{{precio[1].code}}</p>
+                                        <P>${{Math.trunc(precio[1].rate_float)}}</P>
+                                    </div>
+                                    <br>
+
+                                </div>
+
+
+                            </div>
+
+                            <div class="container-loans">
+                                <p>Solicita tus prestamos aquí</p>
+
+                                <div class="prestamos-container">
+                                    <i class="bi bi-piggy-bank"></i>
+                                    <a href="./loan-application.html">Prestamos</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="container-account-box2">
+                        <h2 id="acc-title">Mis Cuentas</h2>
+
+                        <div class="account-container">
+
+                            <div v-for="cuenta in autenticado.accounts" class="card-container-boxs pointer"
+                                @click="inicio=1">
+                                <div class="contanier-card-account">
+
+                                    <div class="container-number-card" style="margin-bottom: 1vh;">
+                                        <p>Numero de cuenta</p>
+                                        <h2>{{cuenta.number}}</h2>
+                                    </div>
+
+                                    <div class="container-balance">
+                                        <p>Saldo:</p>
+                                        <h2>$ {{cuenta.balance}}</p>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+
+
+                            <div v-if="cantidadCuentas<3" class="card-container-boxs">
+                                <div class="contanier-card-account">
+
+                                    <div class="container-number-card-new" style="margin-bottom: 1vh;">
+                                        <a class="nav-link login" id="nav-iniciar-sesion"
+                                            @Click="aparecerFormularioRegistro()" href="#">
+                                            <i class="bi bi-plus-lg"></i>
+                                            <h2>Crear nueva cuenta</h2>
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+
+
+                    <!-- Aqui esta la pagina de cuentas-->
+                </div>
+
+                <div v-if="inicio==1">
+                    <div class="account-container-2">
+                        <h1>Mis Cuentas</h1>
+                        <div class="d-flex">
+                            <div v-for="cuenta in autenticado.accounts" class="card-container-boxs-2 pointer"
+                                @click="accounts(cuenta)">
+                                <div class="contanier-card-account-2">
+
+                                    <div class="container-number-card-2 " style="margin-bottom: 1vh;">
+                                        <p>Numero de cuenta</p>
+                                        <h2>{{cuenta.number}}</h2>
+                                    </div>
+
+                                    <div class="container-balance-2">
+                                        <p>Saldo:</p>
+                                        <h2>$ {{cuenta.balance}}</p>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="contenedor-transacciones">
+                        <div class="info-cuentaSel">
+                            <h3>Cuenta Seleccionada</h3>
+                            <div class="cuentaSel">
+                                <div>
+                                    <p>Cuenta Numero:</p>
+                                    <h2>{{cuentaTransacciones.number}}</h2>
+                                </div>
+                                <div>
+                                    <p> Tipo De cuenta</p>
+                                    <h2> Ahorros</h2>
+                                </div>
+                                <div>
+                                    <p>Saldo:</p>
+                                    <h2>{{cuentaTransacciones.balance}}</h2>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="Transacciones">
+
+                            <h3>Movimientos</h3>
+
+                            <div v-for="transaccion in cuentaTransacciones.transactions" class="contenedor-movimientos">
+                                <div :class="'Transacciones-details-'+transaccion.type">
+                                    <div>
+                                        <h4>{{transaccion.date}}</h4>
+                                        <p>{{transaccion.description}}</p>
+                                    </div>
+                                    <div>
+                                        <p id="cantidad">${{transaccion.amount}}</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Aqui esta la pagina de resumen de prestamos-->
+                <div v-if="inicio==2">
+
+                    <h1 class="titulo-general-prestamo">Este prestamo es {{prestamoSel.loanName}}</h1>
+                    <div class="prestamos-container">
+
+                        <div class="prestamo">
+                            <div class="item-pr">
+                                <div class="titulo-pr">
+                                    <h2>Monto prestado</23>
+                                </div>
+                                <div class="parrafo-pr">
+                                    <h3>${{prestamoSel.requestedAmount}}</h3>
+                                </div>
+                            </div>
+                            <div class="item-pr">
+                                <div class="titulo-pr">
+                                    <h2>Emisor</23>
+                                </div>
+                                <div class="parrafo-pr">
+                                    <h3>BANKU</h3>
+                                </div>
+                            </div>
+                            <div class="item-pr">
+                                <div class="titulo-pr">
+                                    <h2>Destino</23>
+                                </div>
+                                <div class="parrafo-pr">
+                                    <h3>{{autenticado.accounts[0].number}}</h3>
+                                </div>
+                            </div>
+
+                            <div class="item-pr">
+                                <div class="titulo-pr">
+                                    <h2>Cuotas</23>
+                                </div>
+                                <div class="parrafo-pr">
+                                    <h3>{{prestamoSel.payments}}</h3>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="login-form-container contenedor">
+                    <div class="contenedor-icono-cruz-form contenedor" @Click="ocultarForm()">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-square-x"
+                            id="close-form" width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <rect x="4" y="4" width="16" height="16" rx="2" />
+                            <path d="M10 10l4 4m0 -4l-4 4" />
+                        </svg>
+                    </div>
+                    <div class="contenedor  ">
+                        <form action="" class="login-form contenedor bg-claro">
+                            <label>
+                                Elige El Color De La tarjetas
+                                <select v-model="colorNewCard">
+
+                                    <option value="GOLD">GOLD</option>
+                                    <option value="TITANIUM">TITANIUM</option>
+                                    <option value="SILVER">SILVER</option>
+
+                                </select>
+
+                            </label>
+                            <label>
+                                Elige El Tipo De Cuenta
+                                <select v-model="accuntType">
+                                    <Option value="CORRIENTE">Corriente</Option>
+                                    <Option value="DEBIT">Debito</Option>
+                                </select>
+                            </label>
+
+                            <label>
+                                <input type="submit" @click.prevent="agregarCuenta" class="btn-primario login-btn"
+                                    id="register-submit" value="ADQUIERELA AHORA">
+                            </label>
+
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js'></script>
+    <script>
+        const mobileScreen = window.matchMedia("(max-width: 990px )");
+        $(document).ready(function () {
+            $(".dashboard-nav-dropdown-toggle").click(function () {
+                $(this).closest(".dashboard-nav-dropdown")
+                    .toggleClass("show")
+                    .find(".dashboard-nav-dropdown")
+                    .removeClass("show");
+                $(this).parent()
+                    .siblings()
+                    .removeClass("show");
+            });
+            $(".menu-toggle").click(function () {
+                if (mobileScreen.matches) {
+                    $(".dashboard-nav").toggleClass("mobile-show");
+                } else {
+                    $(".dashboard").toggleClass("dashboard-compact");
+                }
+            });
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
+        integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3"> </script>
+    <script src="./JS/perfil.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuario Inicio</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+</head>
+
+<body>
+
+    </head>
+
+    <body>
+        <div id="App">
+
+            <header>
+                <div class="fixed-top">
+                    <nav class="navbar navbar-expand-md bg-light  d-flex justify-content-between ">
+                        <div>
+                            <a class="navbar-brand" href="./index.html">
+                                <img src="./assets/f71f09d3aa7db678ee884a2cdea1a435-simbolo-del-edificio-del-banco.png"
+                                    alt="Logo" width="30" height="24">
+                                Banku
+                            </a>
+                        </div>
+                        <div>
+                            <div class="collapse navbar-collapse" id="navbarNav">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Productos</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Servicio al cliente</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="button">
+                            <a href="./Usuario_Inicio.html"> <button type="button" class="btn btn-dark">Mi cuenta
+                                </button></a>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+            <div class="ganasDeJoder">
+
+            </div>
+            <section class="transacciones">
+                <div>
+                    <id>4</id>
+                    <name>Pipe</name>
+                    <email>pipe@gmail.com</email>
+                    <accounts>
+                        <accounts>
+                            <id>4</id>
+                            <balance>50038.2</balance>
+                            <number>VIN004</number>
+                            <transactions>
+                                <transactions>
+                                    <id>6</id>
+                                    <type>CREDITO</type>
+                                    <amount>50000.0</amount>
+                </div>
+
+                <h1>Transacciones de la cuenta {{cuentaSeladmin.number}} </h1>
+
+                <div class="container">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Monto</th>
+                                <th scope="col">Fecha</th>
+                                <th scope="col">Descripcion</th>
+                                <th scope="col">Tipo</th>
+                            </tr>
+                        </thead>
+                        <tbody v-for="transaccion in cuentaSeladmin.transactions"
+                            :class="(transaccion.type.toLowerCase().includes(type.toLowerCase())) ? 'color-tabla' : 'color-tabla-red'">
+                            <tr>
+                                <th scope="row"> {{transaccion.amount}}</th>
+                                <td>{{transaccion.date}}</td>
+                                <td>{{transaccion.description}}</td>
+                                <td>{{transaccion.type}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://unpkg.com/vue@3"> </script>
+        <script src="./JS/usuario.js"></script>
+
+    </body>
+
+</html>

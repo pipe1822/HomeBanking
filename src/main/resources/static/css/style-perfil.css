@@ -1,0 +1,459 @@
+
+
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web:300');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+body{
+	font-family: 'Poppins', sans-serif;
+	box-sizing: border-box !important;
+	padding: 0 !important;
+	margin: 0 !important;
+	background:#02152b;
+	font-family: 'Poppins', sans-serif;
+}
+.fa-2x {
+	font-size: 2em;
+	}
+	.fa {
+	position: relative;
+	display: table-cell;
+	width: 60px;
+	height: 36px;
+	text-align: center;
+	vertical-align: middle;
+	font-size:20px;
+	}
+	.main-menu:hover,nav.main-menu.expanded {
+		width:200px;
+		overflow:visible;
+		}
+		
+		.main-menu {
+		
+		background:#2C4B61;
+		border-right:1px solid #e5e5e5;
+		position:absolute;
+		top:47px;
+		bottom:0;
+		height:93.4%;
+		left:0;
+		width:200PX;
+		overflow:hidden;
+		-webkit-transition:width .05s linear;
+		transition:width .05s linear;
+		z-index:1000;
+		}
+		
+		.main-menu>ul {
+		margin:7px 0;
+		}
+		
+		.main-menu li {
+		position:relative;
+		display:block;
+		width:200px;
+		}
+		
+		.main-menu li>a {
+		position:relative;
+		display:table;
+		border-collapse:collapse;
+		border-spacing:0;
+		color:#999;
+		 font-family: arial;
+		font-size: 14px;
+		text-decoration:none;
+		-webkit-transition:all .1s linear;
+		transition:all .1s linear;
+		  
+		}
+		
+		.main-menu .nav-icon {
+		position:relative;
+		display:table-cell;
+		width:60px;
+		height:36px;
+		text-align:center;
+		vertical-align:middle;
+		font-size:18px;
+		}
+		
+		.main-menu .nav-text {
+		position:relative;
+		display:table-cell;
+		vertical-align:middle;
+		width:190px;
+		font-family: 'Titillium Web', sans-serif;
+	
+		}
+		.nav-text{
+			padding-top: 10px;
+			padding-bottom: 10px;
+		}
+		
+		
+		#primero{
+			position:relative;
+			display:table-cell;
+			vertical-align:middle;
+			width:190px;
+			font-family: 'Titillium Web', sans-serif;
+			color: white;
+			text-align: center;
+			padding-top: 50px;
+			padding-bottom: 50px;
+		}
+		.main-menu>ul.logout {
+		position:absolute;
+		left:0;
+		bottom:0;
+		}
+		
+		.no-touch .scrollable.hover {
+		overflow-y:hidden;
+		}
+		
+		.no-touch .scrollable.hover:hover {
+		overflow-y:auto;
+		overflow:visible;
+		}
+		
+		a:hover,a:focus {
+		text-decoration:none;
+		}
+		
+		nav {
+		-webkit-user-select:none;
+		-moz-user-select:none;
+		-ms-user-select:none;
+		-o-user-select:none;
+		user-select:none;
+		}
+		
+		nav ul,nav li {
+		outline:0;
+		margin:0;
+		padding:0;
+		}
+		.main-menu li:hover>a,nav.main-menu li.active>a,.dropdown-menu>li>a:hover,.dropdown-menu>li>a:focus,.dropdown-menu>.active>a,.dropdown-menu>.active>a:hover,.dropdown-menu>.active>a:focus,.no-touch .dashboard-page nav.dashboard-menu ul li:hover a,.dashboard-page nav.dashboard-menu ul li.active a {
+		color:#fff;
+		background-color:#5fa2db;
+		}
+		.area {
+		float: left;
+		background: #e2e2e2;
+		width: 100%;
+		height: 100%;
+		}
+		@font-face {
+		  font-family: 'Titillium Web';
+		  font-style: normal;
+		  font-weight: 300;
+		  src: local('Titillium WebLight'), local('TitilliumWeb-Light'), url(http://themes.googleusercontent.com/static/fonts/titilliumweb/v2/anMUvcNT0H1YN4FII8wpr24bNCNEoFTpS2BTjF6FB5E.woff) format('woff');
+		}
+	
+		
+		.Menu {
+		  box-sizing: border-box;
+		  list-style: none;
+		  margin: 0;
+		  padding: 0;
+		  width: 100%;
+		  height:92.4vh;
+		  max-height: 92.4vh;
+		  background-color: white;
+		  display: flex;
+		  flex-direction: column;
+		  
+		}
+		.Menu li {
+		  padding: 8px 0;
+		  background-color:white;
+		  flex: 0;
+		}
+		.Menu li.has-submenu {
+		  flex: 1;
+		}
+		
+		.Menu--submenu {
+		  padding-left: 20px;
+		  height: auto;
+		  overflow: auto;
+		}
+		
+		
+		.segundoMenu input{
+		
+		  width: 100px;
+		  display: flex;
+		  
+		
+		}
+		.pointer{
+		  cursor: pointer;
+		}
+		
+		/*mitad mitad de el administrador*/
+		@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+		
+		/* Header */
+		
+		
+		.container-1 {
+		 
+		  color: #1c1c1c;
+		  border-radius: 20px;
+		  align-items: center;
+		  background: #000;
+		  width: 1000px;
+		 
+		  }
+		
+		.perfil {
+		  display: flex;
+		  align-items: center;
+		}
+		
+		.photo-perfil {
+		  border-radius: 50%;
+		  max-height: 160px;
+		  
+		}
+		
+		.title-perfil {
+		  margin-left: 32px;
+		}
+		
+		.title-perfil h1 {
+		 
+		  font-size: 36px;
+		}
+		
+		.title-perfil h3 {
+		  
+		  font-size: 24px;
+		}
+		
+		/* tag Main */
+		.projects {
+		  display: flex;
+		  flex-direction: column;
+		  align-items: center;
+		  border-radius: 20px;
+		 
+		  width: auto;
+		  height: 500px;
+		}
+		
+		
+		
+		.list-projects {
+		  list-style: none;
+		}
+		
+		.list-projects li {
+		  font-size: 36px;
+		  margin-top: 20px
+		}
+		.list-projects a {
+		  color: #1c1c1c;
+		  text-decoration: none;
+		}
+		
+		.list-projects a:hover {
+		 background-color: #1c1c1c;
+		 color: #fff;
+		 border-radius: 16px;
+		 box-shadow: 0 2px 4px rgba(0,0,0,0.35);
+		 transition: 0.50s;  
+		 padding: 8px
+		}
+		
+		/* Footer */
+		
+		footer ul {
+		  list-style: none;
+		  font-size: 28px;
+		  display: flex;
+		  flex-direction: row;
+		  justify-content: space-evenly;
+		}
+		
+		footer a {
+		  text-decoration: none;
+		  color: #1c1c1c;
+		}
+		
+		@media screen and (max-width:997px){
+		  .main-menu {
+			background:#2C4B61;
+			border-right:1px solid #e5e5e5;
+			position:absolute;
+			top:47px;
+			bottom:0;
+			height:auto;
+			left:0;
+			width: 50px;
+			overflow:hidden;
+			-webkit-transition:width .05s linear;
+			transition:width .05s linear;
+			z-index:1000;
+			}
+			.ganasDeJoder2{
+			  width: 50px;
+			  height:92.4vh; 
+			  background: black;
+			  color: white;
+			
+			}
+			
+		}
+
+		/*-- Resumen en la mitad --*/
+		.Resumen-Account{
+			height: 90vh;
+			width: 85%;
+			margin-left: 200px !important;
+			box-sizing: border-box;
+			background: none;
+			display: grid;
+			
+			
+			
+		}
+		.prueba-grid{
+			display: grid;
+			grid-template-columns: 60% 35% ;
+		}
+		.principal-card{
+			grid-row: 1/span 2;
+		}
+
+		/*-- Cuentas Principal --*/
+		.principal-card, .dolarhoy, .all-cards, .reporte-gastos{
+			border-radius: 10px	;
+			transition: all 0.5s;
+			overflow-y: scroll;
+			color: white;
+			background: #02253d;
+			margin: 10px;
+		}
+		.reciente-title{
+			
+			grid-column: 1/2;
+			
+		}
+	
+		.principal-card:hover, .dolarhoy:hover, .all-cards:hover, .reporte-gastos:hover{
+			box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.411);
+		}
+
+		.all-cards::-webkit-scrollbar, .dolarhoy::-webkit-scrollbar, .all-cards::-webkit-scrollbar, .principal-card::-webkit-scrollbar, .reporte-gastos::-webkit-scrollbar{
+			width: 0.3rem;
+		}
+		.all-cards::-webkit-scrollbar-thumb, .dolarhoy::-webkit-scrollbar-thumb, .all-cards::-webkit-scrollbar-thumb, .principal-card::-webkit-scrollbar-thumb, .reporte-gastos::-webkit-scrollbar-thumb{
+			background:#2C4B61;
+			border-radius: 15px;
+		}
+		.container-principal-cardAccount{
+			width: 100%;
+			height: 100%;
+		}
+
+		.mia-card{
+			display: flex;
+			flex-direction: column;
+			height: 180px;
+			width: 290px;
+			border-radius: 10px;
+			background-image: url(https://media.istockphoto.com/vectors/abstract-gray-gradient-metallic-texture-vector-id1320912181?k=20&m=1320912181&s=612x612&w=0&h=AA3aNhUB3OmGfDJ5btFS8iOJ95LigOcgDWGcCz_lIyg=);
+			color: white;
+		}
+		.mia-card-derecha{
+			
+			
+			width: 40%;
+
+		}
+		.mia-card-derecha button{
+			
+			border: solid black thin;
+			outline: none;
+			padding: 10px;
+			border-radius: 10px;
+
+		}
+		.reporte-gastos{
+			overflow-y: scroll;
+			
+		}
+		.reporte-gastos::-webkit-scrollbar{
+			
+			display: none;
+			
+		}
+		.dolarhoy::-webkit-scrollbar-thumb{
+			background: rgba(0, 0, 0, 0.411);
+		}
+		.fondo{
+		height: 100%;
+		width: 100%;
+			
+			
+		}
+		.actividad-reciente{
+			border-radius: 10px;
+			width: 66rem;
+			
+		}
+		.cuenta{
+			
+			background-image: url(https://profitline.com.co/wp-content/uploads/2017/03/Sin-t%C3%ADtulo-2-1.jpg);
+			background-blend-mode: soft-light;
+			background-color: rgba(0, 0, 0, 0.65);
+			background-repeat: no-repeat ;
+			background-size: cover;
+			background-position: center;
+			color: white;			
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			border-radius: 10px;
+			width: 250px;
+			height: 120px;
+			border:solid #1c1c1c thin;
+			cursor:pointer;
+
+		}
+		.hola{
+			border: solid white 1px ;
+		}
+
+
+		/* Responsive */
+		@media (max-width: 996px) {
+			.Resumen-Account{
+				margin-left:  50px !important;
+			}
+			.div-tarjeta{
+				display: none !important;
+			}
+			.mia-card{
+				display: block !important;
+			}
+			.mia-card-derecha{
+				display: none !important;
+			}
+			.principal-card{
+				flex-direction: row !important;
+				overflow:visible !important;
+				width: 80vw;
+				height: 90vh;
+				background: white;
+
+			}
+			.actividad-reciente, .dolarhoy, .reporte-gastos, .reciente-title{
+				display: none !important;
+				overflow: auto !important;
+			}
+
+		  }
