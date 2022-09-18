@@ -8,9 +8,37 @@
 .ganasDeJoder{
     height: 70px;
 }
+.contenedor{
+     display: grid;
+     grid-template-columns: repeat(2,1fr);
+}
+@media(max-width: 700px){
+
+     .contenedor{
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(2,1fr);
+        }
+
+     .InicioDer{
+     display:flex;
+      justify-content: center;
+      margin-buttom:10px;
+      width:250px
+     }
+
+         .InicioDer_int{
+          display:flex;
+          justify-content: center;
+          margin-buttom:10px;
+          width:250px
+          }
+
+}
+
 .InicioIzq{
-    height: 90vh;
-    width: 50%;
+
+
     background:black;
     background-image: url(/assets/index-tarjeta.jpg);
     background-repeat: no-repeat;

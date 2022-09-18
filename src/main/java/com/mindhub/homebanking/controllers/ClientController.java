@@ -1,8 +1,9 @@
 package com.mindhub.homebanking.controllers;
+import com.mindhub.homebanking.Utils.CardUtils;
 import com.mindhub.homebanking.dtos.ClientDTO;
-import com.mindhub.homebanking.models.Account;
-import com.mindhub.homebanking.models.Client;
+import com.mindhub.homebanking.models.*;
 import com.mindhub.homebanking.repositories.AccountRepository;
+import com.mindhub.homebanking.repositories.CardRepository;
 import com.mindhub.homebanking.repositories.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,6 +12,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -27,6 +29,9 @@ public class ClientController {
 
     @Autowired
     private AccountRepository accountRepository;
+
+    @Autowired
+    private CardRepository cardRepository;
 
     @GetMapping("/clients")
     public List<ClientDTO> getClients() {
@@ -58,13 +63,18 @@ public class ClientController {
             clientRepository.save(clientRegister);
             // Hasta aqui termina la creacion del cliente
 
+
+            Card cardClient = new Card(clientRegister.getName(),CardType.DEBITO,CardColor.GOLD ,CardUtils.getCardNumber(),CardUtils.getCvv(), LocalDate.now().plusYears(5),LocalDate.now(), CardStatus.ACTIVE,clientRegister);
+
+            cardRepository.save(cardClient);
+
             Account accountRepeat;
             String number;
             do {
                 number ="VIN"+ (Math.round(Math.random() * 999999)) ;
                 accountRepeat = accountRepository.findByNumber(number);
             } while (accountRepeat != null);
-            Account account = new Account(number, LocalDateTime.now(), 0.0, clientRegister  );
+            Account account = new Account(number, LocalDateTime.now(), 0.0, cardClient ,clientRegister, AccountType.DEBIT,AccountStatus.ACTIVE );
             accountRepository.save(account);
             // Hasta aqui se crea la cuenta del cliente registrado
 
