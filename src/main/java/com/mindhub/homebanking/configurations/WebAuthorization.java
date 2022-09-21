@@ -22,6 +22,7 @@ public class WebAuthorization extends WebSecurityConfigurerAdapter{
     protected void configure(HttpSecurity http) throws Exception {
 
         http.httpBasic().and().authorizeRequests()
+                .antMatchers("/api/pay").permitAll()
                 .antMatchers(HttpMethod.POST,"/api/clients").permitAll()
                 .antMatchers("/index.html","/Inicio_Sesion.html","/css/style.css","/JS/index.js",
                         "/assets/**").permitAll()

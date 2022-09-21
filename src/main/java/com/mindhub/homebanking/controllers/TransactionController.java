@@ -3,6 +3,7 @@ import com.mindhub.homebanking.dtos.ClientDTO;
 import com.mindhub.homebanking.dtos.TransactionDTO;
 import com.mindhub.homebanking.models.*;
 import com.mindhub.homebanking.repositories.AccountRepository;
+import com.mindhub.homebanking.repositories.CardRepository;
 import com.mindhub.homebanking.repositories.ClientRepository;
 import com.mindhub.homebanking.repositories.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,9 @@ public class TransactionController {
 
     @Autowired
     private ClientRepository clientRepository;
+
+    @Autowired
+    private CardRepository cardRepository;
 
     @GetMapping("/transactions")
     public List<TransactionDTO> getTransactions() {
@@ -65,5 +69,33 @@ public class TransactionController {
 
       return new ResponseEntity<>("ESTA MAL", HttpStatus.FORBIDDEN);
     };
+
+    @Transactional
+    @PostMapping("/pay")
+    public ResponseEntity<Object> pay (@RequestParam double amount, @RequestParam String cardNumber){
+
+        Card card = cardRepository.findByNumber(cardNumber);
+
+        if (amount < 0 || cardNumber.isEmpty()){
+            return new ResponseEntity<>("Debes completar todos los campos para realizar la transferencia.", HttpStatus.FORBIDDEN);
+        }
+        if (card.getCardType() == CardType.DEBITO){
+            if (card.getAccount() == null){
+                return new ResponseEntity<>("La cuenta de origen no existe.", HttpStatus.FORBIDDEN);
+            }
+            if (amount > card.getAccount().getBalance()){
+                return new ResponseEntity<>("Fondos insuficientes.", HttpStatus.FORBIDDEN);
+            }
+
+            Transaction debitTransaction = new Transaction(TransactionType.DEBITO,-amount, "Compra", LocalDateTime.now(),AccountStatus.ACTIVE,card.getAccount());
+
+            transactionRepository.save(debitTransaction);
+            card.getAccount().setBalance(card.getAccount().getBalance() - amount);
+
+
+        }
+
+        return new ResponseEntity<>("Transaccion realizada con exito.", HttpStatus.CREATED);
+    }
 
 }

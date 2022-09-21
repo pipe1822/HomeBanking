@@ -28,6 +28,15 @@ public class Transaction {
     public Transaction() {
     }
 
+    public Transaction(TransactionType type, double amount, String description, LocalDateTime date, AccountStatus transactionStatus, Account account) {
+        this.type = type;
+        this.amount = amount;
+        this.description = description;
+        this.date = date;
+        this.transactionStatus = transactionStatus;
+        this.account = account;
+    }
+
     public Transaction(TransactionType type, double amount, double newBalance , String description, LocalDateTime date, Account account, AccountStatus transactionStatus) {
         this.type = type;
         this.amount = amount;
