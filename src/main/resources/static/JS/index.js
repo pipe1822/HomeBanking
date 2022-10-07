@@ -41,7 +41,7 @@ Vue.createApp({
       let password=this.password
       let name=this.nombre
 
-      axios.post('/api/clients',`name=${name}&age=55&email=${email}&password=${password}`,{headers:{'content-type':'application/x-www-form-urlencoded'}}).then(response => console.log('registered')).catch(response=>console.log(response.response.data));
+      axios.post('/api/clients',`name=${name}&age=55&email=${email}&password=${password}`).then(response => console.log('registered')).catch(response=>console.log(response.response.data));
 
     },
 
@@ -55,7 +55,7 @@ Vue.createApp({
       let email=this.email
       let password=this.password
 
-      axios.post('/api/login',`email=${email}&password=${password}`,{headers:{'content-type':'application/x-www-form-urlencoded'}}).then(response => location.href="Perfil-principal.html").catch(response=>{
+      axios.post('/api/login',`email=${email}&password=${password}`).then(response => location.href="Perfil-principal.html").catch(response=>{
         console.log("No tenemos iniciado ningun usuario")
         swal({
           title: "Usuario o contraseña incorrecta",
